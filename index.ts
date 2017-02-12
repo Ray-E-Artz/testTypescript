@@ -2,8 +2,6 @@
  * Created by Ray on 2/11/17.
  */
 
-
-
 export namespace Tree {
 
   export interface Branch {
@@ -12,38 +10,50 @@ export namespace Tree {
     branches: any[]
   }
 
-  export interface Node {
-    names: string[];
-    value: number
+  export function parseForValues(tree: Branch[]): number[] {
+
+    let values: number[] = [];
+    fillValues(tree, 1, values);
+    return values;
   }
 
-  export function parse(
+  export function parseForNameLists(tree: Branch[]): string[][] {
+
+    let nameLists: string[][] = [];
+    fillNameLists(tree, [], nameLists);
+    return nameLists;
+  }
+
+  function fillValues(
     tree: Branch[],
-    namesInput: string[],
-    nodes: Node[],
-    valueInput = 1): void {
+    initialValue: number,
+    values: number[]): void {
 
     for (let i = 0; i < tree.length; i++) {
-      let names = namesInput.slice(0); //clone array
-
-      let value = valueInput * tree[i].value;
-      names.push(tree[i].name);
-
-      let node = {
-        names: names,
-        value: value
-      } as Node;
-
-      console.log('node: ' + JSON.stringify(node)) ;
-      nodes.push(node);
-      this.parse(tree[i].branches, names, nodes, value );
+      let value = initialValue * tree[i].value;
+      values.push(value);
+      //console.log('value: ' + value);
+      fillValues(tree[i].branches, value, values );
     }
   }
 
+  function fillNameLists(
+    tree: Branch[],
+    initialNameList: string[],
+    nameLists: string[][]
+  ): void {
 
+    for (let i = 0; i < tree.length; i++) {
+      let nameList = initialNameList.slice(0); //clone array
+      nameList.push(tree[i].name);
+      nameLists.push(nameList);
+      //console.log('nameList: ' + JSON.stringify(nameList)) ;
+      fillNameLists(tree[i].branches, nameList, nameLists );
+    }
+  }
 }
 
-
+/* remaining code for testing */
 
 let aTree =
  [
@@ -71,24 +81,12 @@ let aTree =
 
 
 console.log(JSON.stringify(aTree));
-console.log(typeof(aTree));
+console.log('');
 
-//var treeUtils = new TreeUtils();
 
-let nodes: Tree.Node[] = [] as Tree.Node[];
+let values = Tree.parseForValues(aTree);
+console.log(JSON.stringify(values));
+console.log('');
 
- Tree.parse(aTree, [], nodes, 1);
-
-console.log(JSON.stringify(nodes));
-
-/*
- export function testParse(tree: Branch[]): Node[] {
- let nodes = [] as Node[];
- let node = {
- names: [tree[0].name],
- value: tree[0].value
- } as Node;
- nodes.push(node);
- return nodes;
- }
- */
+let nameLists = Tree.parseForNameLists(aTree);
+console.log(JSON.stringify(nameLists));

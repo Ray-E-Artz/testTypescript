@@ -1,0 +1,48 @@
+[
+    {
+        "name":"absent",
+        "value":0.5,
+        "branches":[]},
+    {
+        "name":"present",
+        "value":0.5,
+        "branches":[
+            {
+            "name":"productive",
+            "value":0.75,
+            "branches":[]
+            },
+            {"name":"unproductive",
+            "value":0.25,
+            "branches":[]
+            }
+        ]
+    }
+]
+
+
+
+
+node: {"names":["absent"],"value":0.5}
+node: {"names":["present"],"value":0.5}
+node: {"names":["present","productive"],"value":0.375}
+node: {"names":["present","unproductive"],"value":0.1875}
+
+[
+    {
+        "names":["absent"],
+        "value":0.5
+    },
+    {
+        "names":["present"],
+        "value":0.5
+    },
+    {
+        "names":["present","productive"],
+        "value":0.375
+    },
+    {
+        "names":["present","unproductive"],
+        "value":0.125
+    }
+]

@@ -1,0 +1,24 @@
+{
+  "name": "testTypescript",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@types/node": "^7.0.5",
+    "nodemon": "^1.11.0",
+    "ts-node": "^2.1.0",
+    "typescript": "^2.1.6"
+  },
+  "scripts": {
+    "start": "npm run build:live",
+    "build:live":
+    "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
+  }
+
+}

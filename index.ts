@@ -90,3 +90,23 @@ console.log('');
 
 let nameLists = Tree.parseForNameLists(aTree);
 console.log(JSON.stringify(nameLists));
+
+export namespace NameList {
+
+  export function label(names: string[]) : string {
+
+    if (names.length <= 0) return '';
+
+    let prefixItem = '- ';
+    let midfixItem = '& ';
+    let prefix = prefixItem.repeat(Math.max(0, names.length - 2 ));
+    let midfix = '';
+    if (names.length > 1) {
+      midfix = midfixItem;
+    }
+    return prefix + midfix + names[names.length - 1];
+  }
+
+}
+
+console.log(NameList.label(nameLists[2]));

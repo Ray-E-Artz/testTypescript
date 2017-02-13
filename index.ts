@@ -68,7 +68,18 @@ let aTree =
        {
          name: 'productive',
          value: .75,
-         branches: []
+         branches: [
+           {
+             name: 'normal sputum',
+             value: .75,
+             branches: []
+           },
+           {
+             name: 'abnormal sputum',
+             value: .25,
+             branches: []
+           }
+         ]
        },
        {
          name: 'unproductive',
@@ -80,22 +91,15 @@ let aTree =
  ] as Tree.Branch[];
 
 
-console.log(JSON.stringify(aTree));
+console.log(JSON.stringify(aTree, null, 2));
 console.log('');
 
-
-let values = Tree.parseForValues(aTree);
-console.log(JSON.stringify(values));
-console.log('');
-
-let nameLists = Tree.parseForNameLists(aTree);
-console.log(JSON.stringify(nameLists));
 
 export namespace NameList {
 
   export function label(names: string[]) : string {
 
-    if (names.length <= 0) return '';
+    if (names.length == 0) return '';
 
     let prefixItem = '- ';
     let midfixItem = '& ';
@@ -107,6 +111,40 @@ export namespace NameList {
     return prefix + midfix + names[names.length - 1];
   }
 
+  export function displayName(prefix: string, names: string[]) : string {
+
+    let prefixItem = ': ';
+    let midfixItem = ' & ';
+    let displayName = prefix;
+
+    if (names.length == 0) return displayName;
+
+    displayName = displayName + prefixItem + names[0];
+
+    for (let i=1; i < names.length; i++) {
+      displayName = displayName + midfixItem + names[i];
+    }
+    return displayName;
+  }
+
 }
 
-console.log(NameList.label(nameLists[2]));
+let values = Tree.parseForValues(aTree);
+
+let nameLists = Tree.parseForNameLists(aTree);
+for  (let i=0; i < nameLists.length; i++){
+  console.log(nameLists[i]);
+}
+console.log('');
+for  (let i=0; i < values.length; i++){
+  console.log(values[i]);
+}
+
+console.log('');
+for (let i = 0; i< nameLists.length; i++) {
+  console.log(NameList.label(nameLists[i]));
+}
+console.log('');
+for (let i = 0; i< nameLists.length; i++) {
+  console.log(NameList.displayName('cough', nameLists[i]));
+}

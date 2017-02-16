@@ -69,6 +69,7 @@ for (let i = 0; i< nameLists.length; i++) {
   console.log(NameList.displayName('cough', nameLists[i]));
 }
 
-let a : Tree.Twig = {name:'', value: 1, b:''};
-console.log(a);
+let aBranch : Tree.Branch =
+ {name:'', value: 1, branches: [], tbd:''} as Tree.Branch;
+console.log(aBranch);
 

@@ -9,13 +9,13 @@ export namespace Tree {
     readonly name: string;
     readonly value: number;
     readonly branches: any[];
-    readonly [propName: string]: any;
+//    readonly [propName: string]: any;
   }
 
   export interface Twig {
     readonly name: string;
     readonly value: number;
-    readonly [propName: string]: any;
+//    readonly [propName: string]: any;
   }
 
   export function parseForValues(tree: Branch[]): number[] {

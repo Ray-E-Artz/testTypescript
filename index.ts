@@ -2,7 +2,7 @@
  * Created by Ray on 2/11/17.
  */
 
-import { Tree } from './utilities/tree-utils'
+import { Kbo } from './utilities/kbo-utils'
 import { NameList } from './utilities/namelist-utils'
 
 /* remaining code for testing */
@@ -40,18 +40,18 @@ let aTree =
        }
      ]
    }
- ] as Tree.Branch[];
+ ] as Kbo.Branch[];
 
-
+/*
 console.log(JSON.stringify(aTree, null, 2));
 console.log('');
 
 
 
 
-let values = Tree.parseForValues(aTree);
+let values = Kbo.parseTreeForValues(aTree);
 
-let nameLists = Tree.parseForNameLists(aTree);
+let nameLists = Kbo.parseTreeForNameLists(aTree);
 for  (let i=0; i < nameLists.length; i++){
   console.log(nameLists[i]);
 }
@@ -69,7 +69,60 @@ for (let i = 0; i< nameLists.length; i++) {
   console.log(NameList.displayName('cough', nameLists[i]));
 }
 
-let aBranch : Tree.Branch =
- {name:'', value: 1, branches: [], tbd:''} as Tree.Branch;
+let aBranch : Kbo.Branch =
+ {name:'', value: 1, branches: [], tbd:''} as Kbo.Branch;
 console.log(aBranch);
+*/
 
+
+let	fs = require("fs");
+
+/*
+ Note: in the PUI, the ddoUniverseObject and the symptomObject will be based on data collected via API calls:
+ the ddoUniverseObject is an array of DDO's (Javascript objects, not JSON strings) based on the Reason for Encounter.
+ The symptom object is an SDC object corresponding to a symptom input by the Provider using the PUI GUI.  The PUI
+ software will also have to determine the "description" field in the symptomDescription object below; this is again
+ based on Provider collected via the PUI GUI. Note that the "modifers" field is an empty array for now.
+ */
+
+let ddoUniverse = JSON.parse(fs.readFileSync("./data/ddoUniverse.json", 'utf8'));
+
+let sdcoUniverse = JSON.parse(fs.readFileSync("./data/sdcoUniverse.json", 'utf8'));
+
+let sdcoTree = Kbo.getTreeFromSdco(sdcoUniverse[0]);
+console.log('sdcoTree:')
+console.log(JSON.stringify(sdcoTree, null, 2));
+
+let ddoTree = Kbo.getTreeFromDdo(ddoUniverse[0], "cough-uuid-v1-string");
+console.log('ddooTree:')
+console.log(JSON.stringify(ddoTree, null, 2));
+
+let sdcoValues = Kbo.parseTreeForValues(sdcoTree);
+
+let sdcoNameLists = Kbo.parseTreeForNameLists(sdcoTree);
+
+let ddoValues = Kbo.parseTreeForValues(ddoTree);
+
+let ddoNameLists = Kbo.parseTreeForNameLists(ddoTree);
+
+
+for  (let i=0; i < sdcoNameLists.length; i++){
+  console.log(sdcoNameLists[i]);
+}
+console.log('');
+
+for  (let i=0; i < ddoNameLists.length; i++){
+  console.log(ddoNameLists[i]);
+}
+console.log('');
+
+
+for  (let i=0; i < sdcoValues.length; i++){
+  console.log(sdcoValues[i]);
+}
+console.log('');
+
+for  (let i=0; i < ddoValues.length; i++){
+  console.log(ddoValues[i]);
+}
+console.log('');

@@ -1,0 +1,159 @@
+[
+
+  {
+    "SDC_id": "cough-uuid-v1-string",
+    "display_name":"cough",
+    "description": "Standardized Diagnostic Concept Object for Cough",
+    "document_type":"http://treatment.com/standardized-diagnostic-concept-object",
+    "authors": [
+      { "person_reference" : "http://treatment.com/people/Toni.Kriel", "date": "10/27/2016", "comments": "Original author.","updated":"11/14/2016","updates":["deleted template description","validated json","updated original authors"],"updated2":"12/05/2016","updates2":["added timing cui code","moved extra cui codes to rdc"]},
+      { "person_reference" : "http://treatment.com/people/Kevin.Peterson", "date": "10/27/2016", "comments": "Original author."},
+      { "person_reference" : "http://treatment.com/people/John.Fraser", "date": "11/14/2016", "comments": "Updated structure of document."}
+    ],
+    "tree":
+    [
+      {"name":"absent","umls_cui":"C0425502","rdc":"","value":"0.99","branches":[]},
+      {"name":"present","umls_cui":"C0010200", "rdc":"","value":"0.01","branches":
+      [
+        {"name":"unproductive_cough","umls_cui":"C0850149","rdc":"","value":"0.55","branches":[]},
+        {"name":"productive_cough","umls_cui":"C0239134","rdc":["C1536391","C1578935"],"value":"0.445","branches":
+        [
+          {"name":"normal_sputum","umls_cui":"C0438134","rdc":"","value":"0.5","branches":[]},
+          {"name":"abnormal_sputum","umls_cui":"C0159054","rdc":["C0476275","C0476276","C0476277","C3649530","C0425505","C0425506","C0425504","C0457099"],"value":"0.5","branches":[]}
+        ]
+        },
+        {"name":"whooping_cough","umls_cui":"C0043168","rdc":"C0239133","value":"0.002","branches":[]},
+        {"name":"barking_cough","umls_cui":"C0234866","rdc":"C0239132","value":"0.003","branches":[]}
+      ]
+      }
+    ],
+    "modifiers":
+    [
+      {"name":"Onset_or_Duration","umls_cui":"C0449238","rdc":"C0277793","branches":
+      [
+        {"name":"acute","umls_cui":"C0205178","rdc":["C1276802","C0742857"],"value":"0.4","branches":[]},
+        {"name":"sub_acute","umls_cui":"C1298635","rdc":["C0332164","C1298634"],"value":"0.2","branches":[]},
+        {"name":"chronic","umls_cui":"C0010201","rdc":["C0205191","C0549178","C0547045","C0332164","C1298634"],"value":"0.4","branches":[]}
+      ]
+      },
+      {"name":"Timing","umls_cui":"C0449243","rdc":"","branches":
+      [
+        {"name":"specific_time","umls_cui":"C0449244","rdc":"","value":"0.3","branches":
+        [
+          {"name":"morning","umls_cui":"C0240351","rdc":"C2138223","value":"0.5","branches":[]},
+          {"name":"afternoon","umls_cui":"C2138216","rdc":["C0587118","C0439550"],"value":"0.2","branches":[]},
+          {"name":"nocturnal","umls_cui":"C0231912","rdc":["C2126086","C0581864","C0240526"],"value":"0.3","branches":[]}
+        ]
+        },
+        {"name":"not_related_to_a_specific_time","umls_cui":"","rdc":"","value":"0.7","branches":[]}
+      ]
+      },
+      {"name":"Exacerbation","umls_cui":"C4086268","rdc":"","branches":
+      [
+        {"name":"exacerbating_factor","umls_cui":"C0436331","rdc":"C1444749","value":"0.4","branches":
+        [
+          {"name":"Postural","umls_cui":"","rdc":"","value":"0.25","branches":
+          [
+            {"name":"postural_cough","umls_cui":"C0231917","rdc":["C0205278","C1262869"],"value":"0.1","branches":[]},
+            {"name":"not_related_to_a_specific_posture","umls_cui":"","rdc":"","value":"0.9","branches":[]}
+          ]
+          },
+          {"name":"Exercise","umls_cui":"","rdc":"","value":"0.25","branches":
+          [
+            {"name":"cough_related_to_excercise","umls_cui":"","rdc":"","value":"0.55","branches":
+            [
+              {"name":"cough_at_rest","umls_cui":"C0231914","rdc":"","value":"0.4","branches":[]},
+              {"name":"cough_when_active","umls_cui":"","rdc":"","value":"0.6","branches":[]}
+            ]
+            },
+            {"name":"not_related_excercise","umls_cui":"","rdc":"","value":"0.45","branches":[]}
+          ]
+          },
+          {"name":"Prandial","umls_cui":"","rdc":"","value":"0.25","branches":
+          [
+            {"name":"related_to_eating_or_drinking","umls_cui":"","rdc":"","value":"0.2","branches":[]},
+            {"name":"not_related_to_eating_or_drinking","umls_cui":"","rdc":"","value":"0.8","branches":[]}
+          ]
+          },
+          {"name":"Exposure","umls_cui":"","rdc":"","value":"0.25","branches":
+          [
+            {"name":"cough_after_exposure","umls_cui":"C1096640","rdc":["C0859870","C1142295"],"value":"0.7","branches":[]},
+            {"name":"not_related_to_any_exposure","umls_cui":"","rdc":"","value":"0.3","branches":[]}
+          ]
+          }
+        ]
+        },
+        {"name":"no_exacerbating_factor","umls_cui":"","rdc":"","value":"0.6","branches":[]}
+      ]
+      },
+      {"name":"Severity","umls_cui":"C1319166","rdc":"","branches":
+      [
+        {"name":"mild","umls_cui":"C0436343","rdc":"","value":"0.3","branches":[]},
+        {"name":"moderate","umls_cui":"C0436344","rdc":"","value":"0.4","branches":[]},
+        {"name":"severe","umls_cui":"C0436345","rdc":"","value":"0.3","branches":[]}
+      ]
+      }
+    ]
+  },
+
+  {
+    "SDC_id":"headache-uuid-v1-string",
+    "display_name":"headache",
+    "description": "Standardized Diagnostic Concept Object for Headache",
+    "document_type":"http://treatment.com/standardized-diagnostic-concept-object",
+    "authors": [
+      { "person_reference" : "http://treatment.com/people/Toni.Kriel", "date": "02/07/2017", "comments": "Editor","updated1":"02/07/2017","updates1":["added description","added branches","changed values"]},
+      { "person_reference" : "http://treatment.com/people/Kevin.Peterson", "date": "01/26/2017", "comments": "Original author"}
+    ],
+    "tree":
+    [
+      {"name":"absent","value":"0.995","branches":[]},
+      {"name":"present","value":"0.005","branches":[]}
+    ],
+    "modifiers":
+    [
+      {"name":"Onset_or_Duration","branches":
+      [
+        {"name":"acute","value":"0.8","branches":[]},
+        {"name":"sub_acute","value":"0.15","branches":[]},
+        {"name":"chronic","value":"0.05","branches":[]}
+      ]
+      },
+      {"name":"Timing","branches":
+      [
+        {"name":"specific_time","value":"0.2","branches":[]},
+        {"name":"not_related_to_a_specific_time","value":"0.8","branches":[]}
+      ]
+      },
+      {"name":"Exacerbation","umls_cui":"","synonyms":"","branches":
+      [
+        {"name":"exacerbating_factor","value":"0.3","branches":[]},
+        {"name":"no_exacerbating_factor","value":"0.7","branches":[]}
+      ]
+      },
+      {"name":"Severity","umls_cui":"","synonyms":"","branches":
+      [
+        {"name":"mild","value":"0.6","branches":[]},
+        {"name":"moderate","value":"0.3","branches":[]},
+        {"name":"severe","value":"0.1","branches":[]}
+      ]
+      }
+    ]
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+]
